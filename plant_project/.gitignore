@@ -1,0 +1,33 @@
+# Python cache / temp
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.swp
+.ipynb_checkpoints/
+
+# Sanal ortam
+.venv/
+env/
+venv/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.code-workspace
+
+# Büyük dosyalar
+data/
+models/
+outputs/
+logs/
+class_names/
+*.keras
+*.h5
+*.ckpt
+*.zip
+
+# Jupyter
+*.nbconvert.ipynb
