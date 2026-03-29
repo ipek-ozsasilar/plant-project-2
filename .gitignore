@@ -1,0 +1,37 @@
+# Virtual environments
+.venv/
+env/
+venv/
+**/venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Large / local data (do not commit)
+data/
+models/
+outputs/
+logs/
+class_names/
+datasets/
+downloads/
+kaggle/
+raw/
+plant_project/data/
+plant_project/models/
+plant_project/outputs/
+plant_project/logs/
+plant_project/class_names/
+plant_project/.venv/
+
+# Binaries / archives
+*.keras
+*.h5
+*.ckpt
+*.tflite
+*.zip
+*.tar
+*.tar.gz
+*.7z
