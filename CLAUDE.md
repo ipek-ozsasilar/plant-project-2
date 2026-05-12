@@ -37,15 +37,15 @@ We are building a **species-independent (türden bağımsız)** plant disease mo
 
 ### Target label space (example)
 
-We aim for ~8–12 general categories (final list may change based on data coverage):
+We aim for 9 general categories (optimized to reduce noise):
 
 - `healthy`
-- `leaf_spot` (yaprak lekesi)
 - `blight` (yanıklık)
 - `powdery_mildew` (külleme)
 - `rust` (pas)
-- `mold` (leaf mold / küf)
 - `rot` (çürüme)
+- `scab` (kara leke)
+- `mold` (küf)
 - `chlorosis_yellowing` (sararma / kloroz)
 - `pest_damage` (böcek zararı)
 
@@ -61,7 +61,11 @@ Many diseases share **similar visual patterns** across species (e.g., powdery mi
 
 ### Dataset strategy
 
-We start with PlantVillage and optionally add “in-the-wild” datasets for robustness:
+We start with PlantVillage and optionally add “in-the-wild” datasets for robustness. 
+
+**Optimization History:**
+- **v5.1**: Removed `leaf_damage` (72% accuracy) to reduce inter-class noise.
+- **v5.2**: Replaced `viral_mosaic` with `blight` to eliminate structural confusion with `pest_damage`.
 
 - **PlantVillage**: controlled images, many disease labels (good baseline)
 - **PlantDoc**: field conditions, more realistic backgrounds/lighting
@@ -114,6 +118,11 @@ EfficientNetV2S (ImageNet pretrained) backbone → GlobalAveragePooling2D → Dr
 - `src/paths.py` — central `pathlib.Path` definitions for all project directories
 - `src/train.py` — full end-to-end pipeline: data loading → augmentation → training → evaluation
 - `data/plantvillage/` — PlantVillage dataset (gitignored)
+- `data/raw/` — Source datasets (PlantVillage, PlantDoc)
+- `data/disease_combined_v5/` — Currently active training dataset
+
+### Data Cleanup
+To keep the environment clean, only `raw/`, `inat_disease_images/` and the current `disease_combined_vX` folders are maintained in the `data/` directory. All other temporary or legacy split folders should be removed.
 
 ### Saved Artifacts
 
